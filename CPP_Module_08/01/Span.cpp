@@ -1,4 +1,6 @@
 #include "Span.hpp"
+#include <climits>
+#include <algorithm>
 
 Span::Span(): _arr(0), _size(0) {}
 
@@ -9,8 +11,7 @@ Span::Span(unsigned int size): _arr(0), _size(size) {}
 Span &Span::operator=(const Span &other){
 	if (this != &other){
 		_size = other._size;
-		for (unsigned int i = 0; i < other._size; i++)
-			_arr[i] = other._arr[i];
+		_arr = other._arr;
 	}
 	return *this;
 }
@@ -21,8 +22,8 @@ const char *Span::OutOfRangeException::what() const throw(){
 	return "the array is completed";
 }
 
-const char *Span::NotFoundNumberException::what() const throw(){
-	return "Not find the numbeer in the array";
+const char *Span::OnlyOneMemberException::what() const throw(){
+	return "Need minimum two elemnts to calculate short and long span";
 }
 
 void Span::addNumber(int n){
@@ -32,5 +33,24 @@ void Span::addNumber(int n){
 		throw OutOfRangeException();
 }
 
+int Span::shortestSpan() const {
+	if (_size < 2)
+		throw OnlyOneMemberException();
+	std::vector<int> sorted = _arr;
+	std::sort(sorted.begin(),sorted.end());
+	int shortSpan = sorted[1] - sorted[0];
+	for (size_t i = 0; i <  sorted.size() - 1; i++){
+		int temp = sorted[i + 1] - sorted[i];
+		if (temp < shortSpan)
+			shortSpan = temp;
+	}
+	return shortSpan;
+}
 
-//Falta short y long , tinc que mirar la diferncia mes gran o la mes petita dela array
+int Span::longestSpan() const {
+	if (_size < 2)
+		throw OnlyOneMemberException();
+	std::vector<int> sorted = _arr;
+	std::sort(sorted.begin(),sorted.end());
+	return sorted[sorted.size() - 1] - sorted[0];
+}

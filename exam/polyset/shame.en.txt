@@ -1,0 +1,58 @@
+SHAME ON YOU! Here's what you should know:
+
+BAG (Multiset):
+================
+A bag is a collection data structure that can contain duplicate elements.
+Think of it like a shopping bag - you can put multiple apples in it, and each
+apple is counted separately.
+
+Example:
+bag = {5, 2, 7, 2, 9, 2}  // Notice the number 2 appears 3 times
+
+Operations:
+- add(item): Adds an item to the bag (duplicates allowed)
+- remove(item): Removes one occurrence of the item
+- contains(item): Checks if the item exists in the bag
+- size(): Returns total number of items (including duplicates)
+
+Key Property: ALLOWS DUPLICATES
+
+
+SET:
+====
+A set is a collection data structure that contains only unique elements.
+Each element can appear at most once. Think of it like a collection of unique
+trading cards - you can't have two identical cards.
+
+Example:
+set = {5, 2, 7, 9}  // Each number appears only once
+
+Operations:
+- insert(item): Adds an item only if it doesn't already exist
+- remove(item): Removes the item
+- contains(item): Checks if the item exists in the set
+- size(): Returns number of unique items
+
+Key Property: NO DUPLICATES ALLOWED
+
+
+SEARCHABLE BAG:
+===============
+A bag with the additional capability to search for specific items efficiently.
+
+Additional Operation:
+- search(item): Returns a pointer to the item if found, nullptr otherwise
+
+
+THE RELATIONSHIP:
+=================
+A Set can be implemented by wrapping a SearchableBag and preventing duplicates:
+- When adding an item, first search if it exists
+- If it exists, don't add it again
+- If it doesn't exist, add it
+
+Example conversion:
+Bag:  {1, 2, 2, 3, 3, 3}
+Set:  {1, 2, 3}
+
+Now you know! Don't be ashamed anymore!

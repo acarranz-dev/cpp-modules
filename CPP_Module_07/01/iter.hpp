@@ -12,3 +12,10 @@ template <typename T>
 void imprimir(T elemento){
 	std::cout << elemento << " ";
 }
+
+template <typename U>
+void printMayus(U elemnto){
+	for (int i = 0; i < elemnto[i]; i++)
+		std::cout << static_cast<char>(toupper(elemnto[i]));
+}
+

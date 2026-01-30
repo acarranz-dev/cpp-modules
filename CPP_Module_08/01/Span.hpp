@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 
 class Span{
@@ -13,19 +14,17 @@ public:
 	Span();
 	Span(const Span &other);
 	Span(unsigned int size);
-	Span &operator=(const Span &otehr);
+	Span &operator=(const Span &other);
 	~Span();
-
 	class OutOfRangeException : public::std::exception{
 		const char *what() const throw();
 	};
-
-	class NotFoundNumberException : public::std::exception{
+	class OnlyOneMemberException : public::std::exception{
 		const char *what() const throw();
 	};
 	void addNumber(int n);
-	unsigned int shortestSpan() const;
-	unsigned int longestSpan() const;
+	int shortestSpan() const;
+	int longestSpan() const;
 };
 
 

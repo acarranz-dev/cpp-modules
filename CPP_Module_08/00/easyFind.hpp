@@ -1,3 +1,6 @@
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
+
 #include <vector>
 #include <iostream>
 
@@ -9,10 +12,11 @@ public:
 };
 
 template <typename T>
-int easyfind(T &container, int value){
-	for (unsigned int  i = 0; i < container.size(); i++){
-		if (container[i] == value)
-			return i;
-	}
-	throw NotFoundException();
+typename T::iterator easyfind(T &container, int value){
+	typename T::iterator it = find(container.begin(), container.end(), value);
+	if (it == container.end())
+		throw NotFoundException();
+	return it;
 }
+
+#endif

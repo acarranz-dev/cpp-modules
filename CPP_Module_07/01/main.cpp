@@ -10,12 +10,14 @@ int main(){
 
 	std::string str_arr[] = {"Andreu ","Carranza ","Gibert"} ;
 	iter(str_arr, 3, imprimir<std::string>);
+	std::cout << std::endl;
+	iter(str_arr, 3, printMayus<std::string>);
 	std::cout <<std::endl;
 
 
 	int int_arr[] = {0, 1, 2, 3, 4 ,5};
 	iter(int_arr, 5, imprimir<int>);
-	std::cout <<std::endl;
+	std::cout << std::endl;
 
 	float float_arr[] = {0.34f, 1.22f, 2.787f, 3.54f, 4.009f ,5.234234f};
 	iter(float_arr, 5, imprimir<float>);
